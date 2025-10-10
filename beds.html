@@ -1,0 +1,287 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>The Artisan Sleep Collection</title>
+    
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.5.2/css/all.min.css">
+    
+    <style>
+        /* GLOBAL RESET & BODY STYLES */
+        body {
+            font-family: 'Poppins', sans-serif;
+            background-color: #DDDAD0; 
+            margin: 0;
+            padding: 0; 
+        }
+
+        /* === HEADER BAR (Dark Navigation) FIXES === */
+        .header-bar {
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+            padding: 10px 50px; 
+            background-color: #09122C; 
+            color: white; 
+            font-size: 16px;
+            width: 100%;
+            box-sizing: border-box; 
+        }
+
+        .header-icons a {
+            color: white;
+            font-size: 24px;
+            margin-left: 15px; 
+            text-decoration: none;
+        }
+
+        .company-name {
+            font-weight: bold;
+            font-size: 1.2em;
+            color: white; 
+        }
+
+        /* === MAIN HEADING & FILTERS === */
+        h1 {
+            text-align: center;
+            color: #222831; 
+            margin-top: 30px; 
+        }
+
+        .filters {
+            display: flex;
+            justify-content: center;
+            gap: 10px;
+            margin: 20px 0 30px 0; 
+        }
+
+        input[type="text"], select {
+            padding: 10px;
+            font-size: 14px;
+            border: 1px solid #ccc;
+            border-radius: 5px;
+        }
+
+        /* === PRODUCT CONTAINER & CARDS === */
+        .product-container {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(250px, 1fr));
+            gap: 20px;
+            padding: 10px 50px;
+        }
+
+        .card {
+            background-color: white;
+            border-radius: 10px;
+            box-shadow: 0 2px 8px rgba(0,0,0,0.2); 
+            overflow: hidden;
+            transition: transform 0.2s;
+        }
+
+        .card:hover {
+            transform: scale(1.03);
+        }
+
+        .card img {
+            width: 100%;
+            height: 180px;
+            object-fit: cover;
+        }
+
+        .card-content {
+            padding: 15px;
+        }
+
+        .card-content h3 {
+            margin: 0;
+            font-size: 18px;
+            color: #333;
+        }
+
+        .price {
+            color: #b12704;
+            font-weight: bold;
+            margin-top: 5px;
+        }
+
+        .desc {
+            font-size: 14px;
+            color: #555;
+            margin: 10px 0;
+        }
+
+        .buttons {
+            display: flex;
+            justify-content: space-between;
+        }
+
+        button {
+            border: none;
+            padding: 10px 15px;
+            border-radius: 5px;
+            font-weight: bold;
+            cursor: pointer;
+            transition: 0.2s;
+        }
+        
+        .view-btn {
+            background-color: #007bff;
+            color: white;
+        }
+
+        .view-btn:hover {
+            background-color: #0056b3;
+        }
+
+        .cart-btn {
+            background-color: #333;
+            color: white;
+        }
+
+        .cart-btn:hover {
+            background-color: #000;
+        }
+    </style>
+</head>
+<body>
+    
+    
+    <h1>The Artisan Sleep Collection</h1>
+
+    <div class="filters">
+        <input type="text" id="search" placeholder="Search (Modern , Traditional)">
+        <select id="typeFilter">
+            <option value="all">All Types</option>
+            <option value="traditionalbed">Traditional Bed</option>
+            <option value="modernbed">Modern Bed</option>
+        </select>
+        <select id="priceFilter">
+            <option value="all">All Prices</option>
+            <option value="low">Below ₹100,000</option>
+            <option value="mid">₹100,000 - ₹200,000</option>
+            <option value="high">Above ₹200,000</option>
+        </select>
+    </div>
+
+    <div class="product-container" id="productContainer"></div>
+
+    <script>
+        const products = [
+            {
+                name: "Canopy Bed",
+                price: 322000,
+                type: "traditionalbed",
+                desc: "A highly ornamental, dark-stained wooden bed featuring four tall, spirally carved posts. The headboard and footboard panels have intricate, deep floral and foliage carvings, suggesting a classic Mughal or Colonial-era Indian influence. It is a very formal, regal, and architectural style of bed.",
+                img: "images/WhatsApp Image 2025-10-06 at 10.11.21 PM.jpeg",
+            },
+            {
+                name: "Rajasthani Carved Bed",
+                price: 218500,
+                type: "traditionalbed",
+                desc: "A magnificent solid Teak wood bed with a natural finish. It is defined by an exceptionally tall, elaborate headboard featuring detailed jali (lattice) and floral carvings. The footboard and chest/bench also feature complementary intricate carving in a traditional Rajasthani style.",
+                img: "images/WhatsApp Image 2025-10-06 at 10.11.21 PM (1).jpeg"
+            },
+            {
+                name: "Jali Style Bed",
+                price: 327500,
+                type: "traditionalbed",
+                desc: "A darker wood bed with decorative, turned wooden corner posts. The headboard and footboard feature an open, geometric jali-like design, with square ceramic or tile inserts with floral motifs.",
+                img: "images/WhatsApp Image 2025-10-06 at 10.11.22 PM.jpeg" 
+            },
+            {
+                name: "Sheesham Wood Bed",
+                price: 120300,
+                type: "modernbed",
+                desc: "This is a low-profile platform bed beautifully integrated into a wooden arch surround with classic Mughal/Islamic architectural motifs.",
+                img: "images/WhatsApp Image 2025-10-06 at 10.11.22 PM (1).jpeg"
+            },
+            {
+                name: "Mandarin Carved Bed",
+                price: 25300,
+                type: "modernbed",
+                desc: "A robust, solid wood bed featuring intricate relief carvings of nature (birds and foliage) on the headboard.",
+                img: "images/5.jpeg"
+            },
+            {
+                name: "Colonial Spindle Bed",
+                price: 20300,
+                type: "traditionalbed",
+                desc: "A traditional dark-stained bed with a subtly arched headboard and four classically turned posts.",
+                img: "images/6.jpeg"
+            },
+            {
+                name: "Chettinad Upholstered Bed",
+                price: 17300,
+                type: "traditionalbed",
+                desc: "A dark-wood four-poster bed with deeply turned posts and a decorative upholstered headboard with geometric print.",
+                img: "images/7.jpeg"
+            },
+            {
+                name: "Jaali Platform Bed",
+                price: 19300,
+                type: "modernbed",
+                desc: "A contemporary wooden bed with modern geometric and traditional Indian jaali (lattice) cut-out designs on headboard and footboard.",
+                img: "images/8.jpeg"
+            },
+        ];
+
+        const container = document.getElementById("productContainer");
+        const search = document.getElementById("search");
+        const typeFilter = document.getElementById("typeFilter");
+        const priceFilter = document.getElementById("priceFilter");
+
+        function displayProducts(items) {
+            container.innerHTML = "";
+            items.forEach(item => {
+                container.innerHTML += `
+                    <div class="card">
+                        <img src="${item.img}" alt="${item.name}">
+                        <div class="card-content">
+                            <h3>${item.name}</h3>
+                            <div class="price">₹ ${item.price.toLocaleString()}</div>
+                            <div class="desc">${item.desc}</div>
+                            <div class="buttons">
+                                <button class="view-btn" onclick="viewProduct('${item.name}')">View</button>
+                                <button class="cart-btn">Add to Cart</button>
+                            </div>
+                        </div>
+                    </div>
+                `;
+            });
+        }
+
+        function viewProduct(name) {
+            // Automatically convert product name to lowercase, replace spaces with underscores
+            const filename = name.toLowerCase().replace(/\s+/g, "_") + ".html";
+            window.location.href = filename;
+        }
+
+        function filterProducts() {
+            let filtered = products.filter(p => 
+                p.name.toLowerCase().includes(search.value.toLowerCase())
+            );
+
+            if (typeFilter.value !== "all") {
+                filtered = filtered.filter(p => p.type === typeFilter.value);
+            }
+
+            if (priceFilter.value === "low") {
+                filtered = filtered.filter(p => p.price < 100000);
+            } else if (priceFilter.value === "mid") {
+                filtered = filtered.filter(p => p.price >= 100000 && p.price <= 200000);
+            } else if (priceFilter.value === "high") {
+                filtered = filtered.filter(p => p.price > 200000);
+            }
+
+            displayProducts(filtered);
+        }
+
+        search.addEventListener("input", filterProducts);
+        typeFilter.addEventListener("change", filterProducts);
+        priceFilter.addEventListener("change", filterProducts);
+
+        displayProducts(products);
+    </script>
+</body>
+</html>

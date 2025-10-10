@@ -1,0 +1,277 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>The Heritage Lounging</title>
+    
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.5.2/css/all.min.css">
+    
+    <style>
+        /* GLOBAL RESET & BODY STYLES */
+        body {
+            font-family: 'Poppins', sans-serif;
+            background-color: #DDDAD0; 
+            margin: 0;
+            padding: 0; 
+        }
+
+        /* === HEADER BAR (Dark Navigation) FIXES === */
+        .header-bar {
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+            padding: 10px 50px; 
+            background-color: #09122C; 
+            color: white; 
+            font-size: 16px;
+            width: 100%;
+            box-sizing: border-box; 
+        }
+
+        .header-icons a {
+            color: white;
+            font-size: 24px;
+            margin-left: 15px; 
+            text-decoration: none;
+        }
+
+        .company-name {
+            font-weight: bold;
+            font-size: 1.2em;
+            color: white; 
+        }
+
+        /* === MAIN HEADING & FILTERS === */
+        h1 {
+            text-align: center;
+            color: #222831; 
+            /* Add margin to separate it visually from the header bar */
+            margin-top: 30px; 
+        }
+
+        .filters {
+            display: flex;
+            justify-content: center;
+            gap: 10px;
+            /* Adjust margin to create space above/below filters */
+            margin: 20px 0 30px 0; 
+        }
+
+        input[type="text"], select {
+            padding: 10px;
+            font-size: 14px;
+            border: 1px solid #ccc;
+            border-radius: 5px;
+        }
+
+        /* === PRODUCT CONTAINER & CARDS === */
+        .product-container {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(250px, 1fr));
+            gap: 20px;
+            padding: 10px 50px;
+        }
+
+        .card {
+            background-color: white;
+            border-radius: 10px;
+            box-shadow: 0 2px 8px rgba(0,0,0,0.2); 
+            overflow: hidden;
+            transition: transform 0.2s;
+        }
+
+        .card:hover {
+            transform: scale(1.03);
+        }
+
+        .card img {
+            width: 100%;
+            height: 180px;
+            object-fit: cover;
+        }
+
+        .card-content {
+            padding: 15px;
+        }
+
+        .card-content h3 {
+            margin: 0;
+            font-size: 18px;
+            color: #333;
+        }
+
+        .price {
+            color: #b12704;
+            font-weight: bold;
+            margin-top: 5px;
+        }
+
+        .desc {
+            font-size: 14px;
+            color: #555;
+            margin: 10px 0;
+        }
+
+        .buttons {
+            display: flex;
+            justify-content: space-between;
+        }
+
+        button {
+            border: none;
+            padding: 10px 15px;
+            border-radius: 5px;
+            font-weight: bold;
+            cursor: pointer;
+            transition: 0.2s;
+        }
+        
+        .view-btn {
+            background-color: #007bff;
+            color: white;
+        }
+
+        .view-btn:hover {
+            background-color: #0056b3;
+        }
+
+        .cart-btn {
+            background-color: #333;
+            color: white;
+        }
+
+        .cart-btn:hover {
+            background-color: #000;
+        }
+    </style>
+</head>
+<body>
+    
+    <div class="header-bar">
+        <div class="company-name">
+            The Royal Nakashi Heritage
+        </div>
+        <div class="header-icons">
+            <a href="#" title="Wishlist"><i class="fa-regular fa-heart"></i></a>
+            <a href="#" title="Shopping Cart"><i class="fa-solid fa-bag-shopping"></i></a>
+        </div>
+    </div>
+    <h1>The Heritage Lounging </h1>
+
+    <div class="filters">
+        <input type="text" id="search" placeholder="Search (Modern , Traditional)">
+        <select id="typeFilter">
+            <option value="all">All Types</option>
+            <option value="sofa">Sofa</option>
+            <option value="set">Set</option>
+        </select>
+        <select id="priceFilter">
+            <option value="all">All Prices</option>
+            <option value="low">Below ₹10,000</option>
+            <option value="mid">₹10,000 - ₹20,000</option>
+            <option value="high">Above ₹20,000</option>
+        </select>
+    </div>
+
+    <div class="product-container" id="productContainer"></div>
+
+    <script>
+        const products = [
+           {
+        name: "Modernized Traditional",
+        price: 21300,
+        type: "sofa",
+        desc: "A stunning blend of tradition and modernity, this Carved Wooden Sofa (Diwan Style) is a true statement piece. Crafted from rich, dark wood, the solid frame features intricate geometric and scrollwork carving on the arms and back. Paired with clean-lined, contemporary cushions, this sofa brings an exotic, masculine touch of Indo-Arabic design to any refined living space or study.",
+        img: "images/s01.jpeg"
+      },
+            {
+                name: "Classic French",
+                price: 59500,
+                type: "sofa",
+                desc: "Capture the elegance of a bygone era with our Classic French Rococo-Style Living Room Set. This exquisite collection features a sofa and two matching armchairs with gracefully curved, ornate wooden frames. Upholstered in a plush neutral fabric with subtle tufting, this set offers both luxurious comfort and timeless sophistication. Perfect for creating a grand, formal sitting room or drawing-room aesthetic.",
+                // Corrected path to match previous correct files:
+                img: "images/s02.jpeg"
+            },
+            {
+                name: "Diwan",
+                price: 37500,
+                type: "sofa",
+                desc: "Indulge in pure luxury with this magnificent Ornate Carved Daybed / Settee. The deeply scrolled and heavily carved wooden frame, finished in a dark lacquer, evokes a sense of Victorian opulence or Raj-era grandeur. The light patterned seat cushion and collection of richly embroidered cushions make this a focal point for a lavish living room, boudoir, or sunlit reading nook.",
+                // FIX 4: Corrected image path to match previous correct fainted ceramic or tile inserts with floral motifs, a feature sometimes seen in South Indian Chettinad or vintage design",
+                img: "images/s03.jpeg" 
+            },
+            {
+                name: "Baroque",
+                price: 20300,
+                type: "set",
+                desc: "Experience high drama and unmatched luxury with our Baroque Revival Sofa. Featuring a striking black and gold color palette, the dark wooden frame is accentuated with bold, sweeping curves and elaborate gilded accents. The sofa is sumptuously upholstered with gathered, patterned fabric and finished with highly decorative pillows, creating an air of extravagant French Empire elegance.",
+                img: "images/s04.jpeg"
+            },
+            {
+                name: "English Country",
+                price: 25300,
+                type: "set",
+                desc: "A perfect harmony of comfort and classic taste, this English Country Traditional Sofa brings relaxed elegance to your home. Its gently curved back and exposed wood frame, with a natural finish, create a light and welcoming feel. Upholstered in a simple, high-quality neutral fabric, this sofa is ideal for a bright, traditional living room. Pair it with an antique coffee table for a timeless, heirloom look.",
+                img: "images/s05.jpeg"
+            },
+            
+        ];
+
+        const container = document.getElementById("productContainer");
+        const search = document.getElementById("search");
+        const typeFilter = document.getElementById("typeFilter");
+        const priceFilter = document.getElementById("priceFilter");
+
+        function displayProducts(items) {
+            container.innerHTML = "";
+            items.forEach(item => {
+                container.innerHTML += `
+                    <div class="card">
+                        <img src="${item.img}" alt="${item.name}">
+                        <div class="card-content">
+                            <h3>${item.name}</h3>
+                            <div class="price">₹ ${item.price.toLocaleString()}</div>
+                            <div class="desc">${item.desc}</div>
+                            <div class="buttons">
+                                <button class="view-btn" onclick="viewProduct('${item.name}')">View</button>
+                                <button class="cart-btn">Add to Cart</button>
+                            </div>
+                        </div>
+                    </div>
+                `;
+            });
+        }
+
+        function viewProduct(name) {
+            window.location.href = `details.html?product=${encodeURIComponent(name)}`;
+        }
+
+        function filterProducts() {
+            let filtered = products.filter(p => 
+                p.name.toLowerCase().includes(search.value.toLowerCase())
+            );
+
+            if (typeFilter.value !== "all") {
+                filtered = filtered.filter(p => p.type === typeFilter.value);
+            }
+
+            if (priceFilter.value === "low") {
+                filtered = filtered.filter(p => p.price < 10000);
+            } else if (priceFilter.value === "mid") {
+                filtered = filtered.filter(p => p.price >= 10000 && p.price <= 20000);
+            } else if (priceFilter.value === "high") {
+                filtered = filtered.filter(p => p.price > 20000);
+            }
+
+            displayProducts(filtered);
+        }
+
+        search.addEventListener("input", filterProducts);
+        typeFilter.addEventListener("change", filterProducts);
+        priceFilter.addEventListener("change", filterProducts);
+
+        displayProducts(products);
+    </script>
+</body>
+</html>

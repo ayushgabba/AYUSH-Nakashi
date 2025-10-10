@@ -7,23 +7,24 @@
   <link rel="preconnect" href="https://fonts.googleapis.com">
   <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
   <link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;700;800;900&display=swap" rel="stylesheet">
-  <link rel="stylesheet" href="styles.css" />
+  <link rel="stylesheet" href="index.css" />
 </head>
 <body>
 
   <!-- Header / Navbar -->
-  <header class="site-header">
+   <header class="site-header">
     <div class="container header-inner">
       <div class="brand">
         <span class="spark">✦</span>
-        <span>NAKASHI</span>
+        <a href="index.html"style={{color: '#000000'}} class="logo">NAKASHI</a>
       </div>
+      <div class="right-section"></div>
       <nav class="nav">
-        <a href="#products">All Products</a>
-        <a href="#indoor">beds</a>
-        <a href="#outdoor">sofas</a>
-        <a href="#about">table and chair</a>
-        <a href="#contact">theams</a>
+        <a href="allproduct.html">All Products</a>
+        <a href="beds.html">beds</a>
+        <a href="tripti.html">sofas</a>
+        <a href="table and chair.html">table and chair</a>
+        <a href="themes.html">themes</a>
       </nav>
       <div class="icons">
         <span class="icon">🛒</span>
@@ -39,7 +40,8 @@
     <div class="container hero-content">
       <h1>Crafted with Care for Memorable Moments.</h1>
       <p>Transform your home into a masterpiece of heritage and style with handcrafted Nakashi wood furniture — designed to blend tradition with modern luxury.</p>
-      <a class="btn primary" href="#products">Shop Now</a>
+      <a class="btn primary" href="allproduct.html">Shop Now</a>
+      
     </div>
   </section>
 
@@ -109,7 +111,7 @@
       </div>
 
       <div class="cta-center">
-        <a class="btn outline" href="#most-popular">Explore All Products</a>
+        <a class="btn outline" href="allproduct.html">Explore All Products</a>
       </div>
     </div>
   </section>
@@ -164,38 +166,38 @@
   <section id="most-popular" class="section">
     <div class="container">
       <h2 class="title">Most popular</h2>
-      <p class="lead">Lorem ipsum dolor sit amet, consectetur adipiscing elit. Ut elit tellus, luctus nec ullamcorper mattis, pulvinar dapibus leo.</p>
+      <p class="lead">Loved by all, chosen by the crowd!</p>
       <div class="products-grid">
         <article class="card">
-          <img src="images/mp-1.jpg" alt="Hand Made Pottery" />
+          <img src="images\img 5.jpg" alt="Hand Made Pottery" />
           <div class="card-body">
             <div class="stars">☆☆☆☆☆</div>
             <h4>Hand Made Pottery</h4>
-            <p class="price">$42.00</p>
+            <p class="price">25,000</p>
           </div>
         </article>
         <article class="card">
-          <img src="images/mp-2.jpg" alt="Rattan Lamp" />
+          <img src="images\carved-coffee-table.jpeg" alt="Rattan Lamp" />
           <div class="card-body">
             <div class="stars">☆☆☆☆☆</div>
             <h4>Rattan Lamp</h4>
-            <p class="price">$13.00</p>
+            <p class="price">36,000</p>
           </div>
         </article>
         <article class="card">
-          <img src="images/mp-3.jpg" alt="Ceramic Blue Vase" />
+          <img src="images\elegant-wooden-bed.png" alt="Ceramic Blue Vase" />
           <div class="card-body">
             <div class="stars">☆☆☆☆☆</div>
             <h4>Ceramic Blue Vase</h4>
-            <p class="price">$33.50</p>
+            <p class="price">28,300</p>
           </div>
         </article>
         <article class="card">
-          <img src="images/mp-4.jpg" alt="Guangzhou Vase" />
+          <img src="images\image 2.png" alt="Guangzhou Vase" />
           <div class="card-body">
             <div class="stars">☆☆☆☆☆</div>
             <h4>Guangzhou Vase</h4>
-            <p class="price">$36.00</p>
+            <p class="price">24,500</p>
           </div>
         </article>
       </div>
@@ -307,6 +309,7 @@
     const btn = document.querySelector('.nav-toggle');
     const nav = document.querySelector('.nav');
     btn.addEventListener('click', () => nav.classList.toggle('open'));
+    <a href="beds.html">Beds</a>
   </script>
 </body>
 </html>
